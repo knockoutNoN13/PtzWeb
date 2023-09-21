@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, render_template_string
-from os import popen
+from subprocess import *
 from bs4 import BeautifulSoup 
 app = Flask(__name__)
 
@@ -10,14 +10,21 @@ def home():
        res = ''
        return render_template('home.html', result=render_template_string(res))
     elif request.method == 'POST':
-        try:
-            site = request.form['command']
-            res = popen(f'curl {site}').read()
+        site = request.form['command']
+        resShell = run(f'curl -i {site}', shell = True, text = True, stderr=PIPE, stdout=PIPE)
+        res = resShell.stdout
+        err = resShell.stderr
+        print(res)
+        if res:
+            headers = res
+            res = res
             res = BeautifulSoup(res, 'html.parser').prettify()
-            print(res)
-        except:
-            res = ''
-        return render_template('home.html', result=render_template_string(res.replace('<!DOCTYPE html>','')))
+        else:
+            res = 'No body'
+            headers = 'No headers'
+        if 'Xferd' in err:
+            err=''
+        return render_template('home.html', result=res, err=err, headers=render_template_string(headers))
 
 
 if __name__ == '__main__':

@@ -11,6 +11,7 @@
         #column1 {background-color: gray; border-radius: 25px; overflow: auto; height:600px}
         #column2 {background-color: lightgreen; border-radius: 25px; overflow: auto; height: 600px}
         #respBody {text-align: left;}
+        #respHeaders {text-align: left;}
         #button {
             background-color: #4CAF50; /* Green */
             border: none;
@@ -22,6 +23,9 @@
             display: inline-block;
             font-size: 16px;
             
+        }
+        pre {
+            white-space: pre-line;
         }
     </style>
 </head>
@@ -37,11 +41,16 @@
             <input type="text" id="command" class="'command" name="command">
             <input type="submit" value="CURL!" id="button">
         </form>
+        <p> {{ err }}</p>
         <div class="row">
         <div class="column" id="column1">
         <h2>Response Headers</h2>
-        <p>No headers specified for response</p>
+        <div id="respHeaders">
+        <pre>
+            {{ headers }}
+        </pre>
         </div>
+    </div>
         <div class="column" id="column2">
         <h2>Response body</h2>
         <pre id="respBody">
