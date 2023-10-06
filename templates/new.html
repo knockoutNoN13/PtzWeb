@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<head>
+    <title>Snaky Curl</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='events.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
+    
+</head>
+
+
+
+
+<body style="background-image: url({{ url_for('static', filename='background.jpg') }})">
+    <h1 id = "header">
+        Try new online request tool
+    </h1>
+    <form action="/" method="post">
+
+        <input type="text" name="site" id="site">
+
+    <div class="row">
+
+        <div class="column" style="padding-right: 2px; border-right-style: dashed; width: 47%; height: 1000px; background-color: #DCDCDC; margin-left: 3%; border-top-left-radius: 25px; border-bottom-left-radius: 25px; ">
+            <div id = "slider">
+                <div class="reating-arkows imagexplains">
+                    <input id="d" type="checkbox" name="d">
+                    <label for="d">
+                    <div class="trianglesusing" data-checked="POST" data-unchecked="GET"></div>
+                    <div class="moresharpened"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="column" style="background-color: #D3D3D3; height: 1000px; width: 47%; border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
+
+
+
+        </div>
+    </div> 
+    
+       
+
+
+
+        <input type="submit" value="REQUEST" id="button">
+    </form>
+
+</body>
+</html>
