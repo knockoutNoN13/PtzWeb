@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <head>
     <title>Snaky Curl</title>
-    <script type="text/javascript" src="{{ url_for('static', filename='events.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
     
 </head>
@@ -19,7 +19,7 @@
 
     <div class="row">
 
-        <div class="column" style="padding-right: 2px; border-right-style: dashed; width: 47%; height: 1000px; background-color: #DCDCDC; margin-left: 3%; border-top-left-radius: 25px; border-bottom-left-radius: 25px; ">
+        <div class="column" style="padding-right: 2px; border-right-style: dashed; width: 47%; height: 1000px; background-color: #DCDCDC; margin-left: 3%; border-top-left-radius: 25px; border-bottom-left-radius: 25px; position: relative;">
             <div id = "slider">
                 <div class="reating-arkows imagexplains">
                     <input id="d" type="checkbox" name="d">
@@ -29,6 +29,13 @@
                     </label>
                 </div>
             </div>
+            <details>
+                <summary>Headers</summary>
+                <div class="headerClass" id="headerClass">
+                    <button class="plus" onclick="addQuestion()" type="button">+</button>
+                </div>
+
+            </details>
             <input type="submit" value="REQUEST" id="formButton">
         </div>
         
