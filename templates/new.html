@@ -22,7 +22,7 @@
         <div class="column" style="padding-right: 2px; border-right-style: dashed; width: 47%; height: 1000px; background-color: #DCDCDC; margin-left: 3%; border-top-left-radius: 25px; border-bottom-left-radius: 25px; position: relative;">
             <div id = "slider">
                 <div class="reating-arkows imagexplains">
-                    <input id="d" type="checkbox" name="d">
+                    <input id="d" type="checkbox" name="reqType">
                     <label for="d">
                     <div class="trianglesusing" data-checked="POST" data-unchecked="GET"></div>
                     <div class="moresharpened"></div>
@@ -36,12 +36,19 @@
                 </div>
 
             </details>
+            <p class="headBody">Request Body</p>
+            <div class="reqBody">
+                <input type="text" class="reqBody">
+            </div>
             <input type="submit" value="REQUEST" id="formButton">
         </div>
         
         <div class="column" style="background-color: #D3D3D3; height: 1000px; width: 47%; border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
 
-
+            <h1 style="text-align: center;">Response</h1>
+            <pre id="respBody">
+                {{ result }}
+            </pre> 
 
         </div>
     </div> 

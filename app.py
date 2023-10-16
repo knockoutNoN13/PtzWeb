@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template, render_template_string
+from flask import Flask, request, render_template, render_template_string, redirect, url_for
 import requests
-from bs4 import BeautifulSoup 
+from bs4 import BeautifulSoup
+from werkzeug.datastructures import ImmutableMultiDict
 
 
 app = Flask(__name__)
@@ -8,14 +9,24 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'GET':
-       res = ''
-       
+    if request.method == 'GET':      
        return render_template('new.html')
 
     else:
-        print(request.form)
-        return '1'
+        requestDict = request.form.to_dict(flat=False)
+        site = requestDict['site'][0]
+        headers = {}
+        try:
+            headName = requestDict['headerName']
+            headVal = requestDict['headerValue']
+            for i in zip(headName, headVal):
+                headers[i[0]] = i[1]
+        except:
+            pass
+        
+        if 'reqType' in requestDict.keys():
+            print('post')
+        return redirect(url_for("home"))
     
     # elif request.method == 'POST':
     #     site = request.form['command']
