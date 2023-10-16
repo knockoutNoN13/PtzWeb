@@ -25,7 +25,21 @@ def home():
             pass
         
         if 'reqType' in requestDict.keys():
-            print('post')
+            try:
+                response = request.post(site, headers=headers)
+                respHead = response.headers
+                respBody = response.text
+                return render_template('new.html', err=e)
+            except Exception as e:
+                return render_template('new.html', result=respBody, headers=render_template_string(str(respHead)))
+        else:
+            try:
+                response = request.get(site, headers=headers)
+                respHead = response.headers
+                respBody = response.text
+                return render_template('new.html', result=respBody, headers=render_template_string(str(respHead)))
+            except Exception as e:
+                return render_template('new.html', err=e)
         return redirect(url_for("home"))
     
     # elif request.method == 'POST':

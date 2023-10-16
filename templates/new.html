@@ -16,6 +16,7 @@
     <form action="/" method="post">
 
         <input type="text" name="site" id="site">
+        {{err}}
 
     <div class="row">
 
@@ -47,6 +48,7 @@
 
             <h1 style="text-align: center;">Response</h1>
             <pre id="respBody">
+                {{ headers }}
                 {{ result }}
             </pre> 
 
