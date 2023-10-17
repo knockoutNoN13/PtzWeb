@@ -2,8 +2,8 @@
 <head>
     <title>Snaky Curl</title>
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='new.css') }}">
-    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 
@@ -16,7 +16,7 @@
     <form action="/" method="post">
 
         <input type="text" name="site" id="site">
-        {{ err }}
+        <div class="error"> {{ err }} </div>
 
     <div class="row">
 
@@ -47,8 +47,12 @@
         <div class="column" style="background-color: #D3D3D3; height: 1000px; width: 47%; border-top-right-radius: 25px; border-bottom-right-radius: 25px;">
 
             <h1 style="text-align: center;">Response</h1>
+            <div class="respHead">
+                {% for h in headers.keys() %}
+                    <li style="margin-top: 5px;">{{h}}     :       {{ headers[h] }}</li>
+                {% endfor %}
+            </div>
             <pre id="respBody">
-                {{ headers }}
                 {{ result }}
             </pre> 
 

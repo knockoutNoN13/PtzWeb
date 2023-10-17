@@ -11,8 +11,9 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'GET':      
-       return render_template('new.html')
+    if request.method == 'GET':
+       headers={}      
+       return render_template('home.html', headers=headers)
 
     else:
         requestDict = request.form.to_dict(flat=False)
@@ -25,25 +26,28 @@ def home():
                 headers[i[0]] = i[1]
         except:
             pass
-        
+        print(request.form)
         if 'reqType' in requestDict.keys():
             try:
                 response = requests.post(site, headers=headers)
                 respHead = response.headers
                 respBody = response.text
-                
-                return render_template('new.html', result=respBody, headers=ast.literal_eval(render_template_string(str(respHead))))
+                for h in respHead.keys():
+                    respHead[h] = render_template_string(respHead[h])
+                return render_template('home.html', result=respBody, headers=respHead)
             except Exception as e:
-                return render_template('new.html', err=e)
+                return render_template('home.html', err=str(e), headers={})
         else:
             try:
                 response = requests.get(site, headers=headers)
                 respHead = response.headers
                 respBody = response.text
-                print(respBody, respHead,'hui')
-                return render_template('new.html', result=respBody, headers=ast.literal_eval(render_template_string(str(respHead))))
+                respBody =  BeautifulSoup(respBody, 'html.parser').prettify()
+                for h in respHead.keys():
+                    respHead[h] = str(render_template_string(respHead[h]))
+                return render_template('home.html', result=respBody, headers=respHead)
             except Exception as e:
-                return render_template('new.html', err=str(e))
+                return render_template('home.html', err=str(e), headers={})
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

@@ -101,6 +101,7 @@ details{
 .column {
     float: left;
     position: relative;
+    overflow: auto;
 
 }
 
@@ -125,6 +126,10 @@ details{
 
 }
 
+.respHead {
+  margin-left: 20px;
+
+}
 
 #site {
     padding: 5px;
@@ -140,7 +145,12 @@ details{
     text-align: center;
 }
 
-
+.error {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
 
 .reating-arkows {
     position: relative;
@@ -334,35 +344,4 @@ details{
     transition: transform 0.3s ease-in-out;
     color: #b53e3e;
    }
-   
-   
-  
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    
