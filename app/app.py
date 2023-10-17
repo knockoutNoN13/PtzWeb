@@ -2,7 +2,7 @@ from flask import Flask, request, render_template, render_template_string, redir
 import requests
 from bs4 import BeautifulSoup
 from werkzeug.datastructures import ImmutableMultiDict
-import ast
+
 
 
 
