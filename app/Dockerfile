@@ -6,7 +6,7 @@ RUN apk add --no-cache python3 \
 
 EXPOSE 8080
 
-COPY ./app /app
+COPY ./ /app
 
 ENTRYPOINT [ "python3" ]
 
