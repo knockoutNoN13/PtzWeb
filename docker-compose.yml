@@ -1,6 +1,0 @@
-version: '2.3'
-services:
-  web-ssti:
-    build: ./app
-    ports:
-      - '11337:5000'
