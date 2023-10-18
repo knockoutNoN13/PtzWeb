@@ -4,7 +4,7 @@ RUN apk add --no-cache python3 \
     py3-pip \
      && pip install flask bs4 requests
 
-EXPOSE 8080
+EXPOSE 5000
 
 COPY ./ /app
 
