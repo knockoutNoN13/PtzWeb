@@ -8,6 +8,8 @@ EXPOSE 5000
 
 COPY ./app /app
 
+ADD BFBJVDYGDBJH_flag.txt /
+
 ENTRYPOINT [ "python3" ]
 
 CMD [ "/app/app.py" ]
