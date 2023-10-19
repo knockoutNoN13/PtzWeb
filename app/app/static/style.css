@@ -9,7 +9,7 @@
 
 #respBody {
   text-align: left;
-  overflow: auto-;
+  overflow: auto;
 }
 
 summary::-webkit-details-marker{display:none;}
@@ -63,9 +63,8 @@ details{
 }
 
 .reqBody {
-  margin: 5px;
-  margin-right: 5px;
-  width: 98.5%;
+  margin:auto;
+  width: 98%;
   height: 400px;
   border-radius: 10px;
 }
@@ -101,7 +100,6 @@ details{
 .column {
     float: left;
     position: relative;
-    overflow: auto;
 
 }
 
