@@ -50,5 +50,5 @@ def home():
                 return render_template('home.html', err=str(e), headers={})
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=False, host="0.0.0.0")
 
