@@ -100,6 +100,7 @@ details{
 .column {
     float: left;
     position: relative;
+    overflow: auto;
 
 }
 
