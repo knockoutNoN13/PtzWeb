@@ -18,18 +18,27 @@ def home():
     else:
         requestDict = request.form.to_dict(flat=False)
         site = requestDict['site'][0]
+        body = ''
+        try:
+            body = requestDict['reqBody'][0]
+        except:
+            pass
         headers = {}
         try:
             headName = requestDict['headerName']
             headVal = requestDict['headerValue']
+
             for i in zip(headName, headVal):
                 headers[i[0]] = i[1]
         except:
             pass
-        print(request.form)
+
         if 'reqType' in requestDict.keys():
             try:
-                response = requests.post(site, headers=headers)
+                try:
+                    response = requests.post(site, headers=headers, data=body)
+                except:
+                    response = requests.post(site, data=body)
                 respHead = response.headers
                 respBody = response.text
                 for h in respHead.keys():
@@ -39,15 +48,17 @@ def home():
                 return render_template('home.html', err=str(e), headers={})
         else:
             try:
-                response = requests.get(site, headers=headers)
+                try:
+                    response = requests.get(site, headers=headers, data=body)
+                except:
+                    response = requests.get(site, data=body)
                 respHead = response.headers
                 respBody = response.text
-                respBody =  BeautifulSoup(respBody, 'html.parser').prettify()
                 for h in respHead.keys():
-                    respHead[h] = str(render_template_string(respHead[h]))
+                    respHead[h] = render_template_string(respHead[h])
                 return render_template('home.html', result=respBody, headers=respHead)
             except Exception as e:
-                return render_template('home.html', err=str(e), headers={})
+                return render_template('home.html', err=str(e), headers={}) 
 
 if __name__ == '__main__':
     app.run(debug=False, host="0.0.0.0")
